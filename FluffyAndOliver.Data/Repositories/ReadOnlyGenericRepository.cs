@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
+    using System.Threading.Tasks;
 
     using FluffyAndOliver.Shared;
 
@@ -53,9 +54,9 @@
         /// <returns>
         /// The <see cref="IEnumerable{T}"/>.
         /// </returns>
-        public virtual IEnumerable<TEntity> FindBy(Expression<Func<TEntity, bool>> predicate)
+        public virtual async Task<IEnumerable<TEntity>> FindBy(Expression<Func<TEntity, bool>> predicate)
         {
-            return this.dataSet.AsNoTracking().Where(predicate);
+            return await this.dataSet.AsNoTracking().Where(predicate).ToListAsync();
         }
 
         /// <summary>
@@ -70,12 +71,12 @@
         /// <returns>
         /// The <see cref="IEnumerable{T}"/>.
         /// </returns>
-        public IEnumerable<TEntity> FindBy(
+        public async Task<IEnumerable<TEntity>> FindBy(
             Expression<Func<TEntity, bool>> predicate,
             params Expression<Func<TEntity, object>>[] includeProperties)
         {
             var query = this.GetAllIncluding(includeProperties);
-            var results = query.Where(predicate);
+            var results = await query.Where(predicate).ToListAsync();
             return results;
         }
 
@@ -91,10 +92,10 @@
         /// <returns>
         /// The <see cref="TEntity"/>.
         /// </returns>
-        public virtual TEntity Get<TKey>(TKey id)
+        public virtual async Task<TEntity> Get<TKey>(TKey id)
         {
             // return this.dataSet.Find(id); // Wont work with "AsNoTracking"
-            return this.dataSet.AsNoTracking().SingleOrDefault(e => e.Id.Equals(id));
+            return await this.dataSet.AsNoTracking().SingleOrDefaultAsync(e => e.Id.Equals(id));
         }
 
         /// <summary>
@@ -103,9 +104,9 @@
         /// <returns>
         /// The <see cref="IEnumerable{T}"/>.
         /// </returns>
-        public virtual IEnumerable<TEntity> GetAll()
+        public virtual async Task<IEnumerable<TEntity>> GetAll()
         {
-            return this.dataSet.AsNoTracking();
+            return await this.dataSet.AsNoTracking().ToListAsync();
         }
 
         /// <summary>

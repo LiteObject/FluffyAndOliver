@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq.Expressions;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// The Repository interface.
@@ -19,7 +20,7 @@
         /// <returns>
         /// The <see cref="IReadOnlyList{T}"/>.
         /// </returns>
-        IEnumerable<TEntity> GetAll();
+        Task<IEnumerable<TEntity>> GetAll();
 
         /// <summary>
         /// The get.
@@ -33,7 +34,7 @@
         /// <returns>
         /// The <see cref="TEntity"/>.
         /// </returns>
-        TEntity Get<TKey>(TKey id);
+        Task<TEntity> Get<TKey>(TKey id);
 
         /// <summary>
         /// The find by.
@@ -44,6 +45,6 @@
         /// <returns>
         /// The <see cref="IReadOnlyList{T}"/>.
         /// </returns>
-        IEnumerable<TEntity> FindBy(Expression<Func<TEntity, bool>> predicate);
+        Task<IEnumerable<TEntity>> FindBy(Expression<Func<TEntity, bool>> predicate);
     }
 }
