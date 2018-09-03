@@ -1,10 +1,19 @@
-﻿using System;
-
-namespace FluffyAndOliver
+﻿namespace FluffyAndOliver
 {
-    class Program
+    using System;
+
+    /// <summary>
+    /// The program.
+    /// </summary>
+    internal class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// The main.
+        /// </summary>
+        /// <param name="args">
+        /// The args.
+        /// </param>
+        public static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
         }
