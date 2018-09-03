@@ -44,30 +44,14 @@
             this.dataSet = context.Set<TEntity>();
         }
 
-        /// <summary>
-        /// The insert.
-        /// </summary>
-        /// <param name="entity">
-        /// The entity.
-        /// </param>
-        /// <returns>
-        /// The <see cref="Task"/>.
-        /// </returns>
+        /// <inheritdoc />
         public async Task Insert(TEntity entity)
         {
             await this.dataSet.AddAsync(entity);
             await this.context.SaveChangesAsync();
         }
 
-        /// <summary>
-        /// The update.
-        /// </summary>
-        /// <param name="entity">
-        /// The entity.
-        /// </param>
-        /// <returns>
-        /// The <see cref="Task"/>.
-        /// </returns>
+        /// <inheritdoc />
         public async Task Update(TEntity entity)
         {
             this.dataSet.Attach(entity);
@@ -75,18 +59,7 @@
             await this.context.SaveChangesAsync();
         }
 
-        /// <summary>
-        /// The delete.
-        /// </summary>
-        /// <param name="id">
-        /// The id.
-        /// </param>
-        /// <typeparam name="TKey">
-        /// The identifier key type.
-        /// </typeparam>
-        /// <returns>
-        /// The <see cref="Task"/>.
-        /// </returns>
+        /// <inheritdoc />
         public async Task Delete<TKey>(TKey id)
         {
             var entity = await this.Get(id);
