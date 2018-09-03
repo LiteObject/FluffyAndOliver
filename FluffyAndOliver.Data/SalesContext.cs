@@ -1,5 +1,8 @@
 ﻿namespace FluffyAndOliver.Data
 {
+    using System;
+    using System.Linq;
+
     using FluffyAndOliver.Domain.Models;
 
     using Microsoft.EntityFrameworkCore;
@@ -27,6 +30,27 @@
         /// Gets or sets the products.
         /// </summary>
         public DbSet<Product> Products { get; set; }
+
+        /// <inheritdoc />
+        public override int SaveChanges()
+        {
+            this.ChangeTracker.DetectChanges();
+            var timestamp = DateTime.Now;
+
+            foreach (var entry in this.ChangeTracker.Entries().Where(e =>
+                (e.State == EntityState.Added || e.State == EntityState.Modified)
+                && !e.Metadata.IsOwned()))
+            {
+                entry.Property("ModifiedOn").CurrentValue = timestamp;
+
+                if (entry.State == EntityState.Added)
+                {
+                    entry.Property("CreatedOn").CurrentValue = timestamp;
+                }
+            }
+
+            return base.SaveChanges();
+        }
 
         /// <summary>
         /// The on configuring.

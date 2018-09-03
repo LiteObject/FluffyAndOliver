@@ -23,6 +23,16 @@
         public virtual DateTime CreatedOn { get; set; }
 
         /// <summary>
+        /// Gets or sets the modified by.
+        /// </summary>
+        public virtual string ModifiedBy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the modified on.
+        /// </summary>
+        public virtual DateTime ModifiedOn { get; set; }
+        
+        /// <summary>
         /// The ==.
         /// </summary>
         /// <param name="a">
