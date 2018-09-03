@@ -1,5 +1,7 @@
-﻿namespace FluffyAndOliver.Domain.Models
+﻿namespace FluffyAndOliver.Shared
 {
+    using System;
+
     /// <summary>
     /// The base entity.
     /// </summary>
@@ -9,7 +11,17 @@
         /// Gets or sets the id.
         /// </summary>
         public virtual int Id { get; set; }
-        
+
+        /// <summary>
+        /// Gets or sets the created by.
+        /// </summary>
+        public virtual string CreatedBy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the created on.
+        /// </summary>
+        public virtual DateTime CreatedOn { get; set; }
+
         /// <summary>
         /// The ==.
         /// </summary>

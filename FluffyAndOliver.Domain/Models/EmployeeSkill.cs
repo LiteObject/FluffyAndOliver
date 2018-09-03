@@ -1,5 +1,7 @@
 ﻿namespace FluffyAndOliver.Domain.Models
 {
+    using FluffyAndOliver.Shared;
+
     /// <summary>
     /// This is the join table
     /// </summary>

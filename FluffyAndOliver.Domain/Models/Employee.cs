@@ -2,6 +2,8 @@
 {
     using System.Collections.Generic;
 
+    using FluffyAndOliver.Shared;
+
     /// <summary>
     /// The employee.
     /// </summary>

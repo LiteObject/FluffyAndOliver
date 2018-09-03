@@ -1,5 +1,7 @@
 ﻿namespace FluffyAndOliver.Domain.Models
 {
+    using FluffyAndOliver.Shared;
+
     /// <summary>
     /// The product.
     /// </summary>

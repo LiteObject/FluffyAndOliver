@@ -63,7 +63,7 @@ namespace FluffyAndOliver.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-                @"Server=(localdb)\mssqllocaldb;Database=ConsoleWithEFCore;Trusted_Connection=True;",
+                @"Server=(localdb)\mssqllocaldb;Database=FluffyAndOliver;Trusted_Connection=True;",
                 options => options.EnableRetryOnFailure()); // Connection Resiliency
 
             optionsBuilder.UseLoggerFactory(

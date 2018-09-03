@@ -1,9 +1,15 @@
 ﻿namespace FluffyAndOliver.Data.Repositories
 {
+    using System.Linq;
+
+    using FluffyAndOliver.Domain.Models;
+
+    using Microsoft.EntityFrameworkCore;
+
     /// <summary>
     /// The employee repository.
     /// </summary>
-    public class EmployeeRepository : GenericRepository<Employee, EmployeeContext>
+    public class EmployeeRepository : ReadOnlyGenericRepository<Employee, EmployeeContext>
     {
         /// <summary>
         /// The blog context.

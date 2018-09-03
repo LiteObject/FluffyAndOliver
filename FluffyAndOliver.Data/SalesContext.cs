@@ -1,4 +1,4 @@
-﻿namespace FluffyAndOliver.Data.Repositories
+﻿namespace FluffyAndOliver.Data
 {
     using FluffyAndOliver.Domain.Models;
 
@@ -9,8 +9,15 @@
     /// <summary>
     /// The order context.
     /// </summary>
-    public class OrderContext : DbContext
+    public class SalesContext : DbContext
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SalesContext"/> class.
+        /// </summary>
+        public SalesContext()
+        {
+        }
+
         /// <summary>
         /// Gets or sets the orders.
         /// </summary>
@@ -21,7 +28,6 @@
         /// </summary>
         public DbSet<Product> Products { get; set; }
 
-
         /// <summary>
         /// The on configuring.
         /// </summary>
@@ -31,7 +37,7 @@
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-                @"Server=(localdb)\mssqllocaldb;Database=ConsoleWithEFCore;Trusted_Connection=True;",
+                @"Server=(localdb)\mssqllocaldb;Database=FluffyAndOliver;Trusted_Connection=True;",
                 options => options.EnableRetryOnFailure()); // Connection Resiliency
 
             optionsBuilder.UseLoggerFactory(

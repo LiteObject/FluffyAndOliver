@@ -2,16 +2,34 @@
 {
     using System.Collections.Generic;
 
+    using FluffyAndOliver.Shared;
+
     /// <summary>
     /// The order.
     /// </summary>
     public class Order : Entity
     {
         /// <summary>
-        /// The products.
+        /// Initializes a new instance of the <see cref="Order"/> class.
         /// </summary>
-        private readonly List<Product> products = new List<Product>();
+        /// <param name="name">
+        /// The name.
+        /// </param>
+        public Order(string name)
+        {
+            this.Name = name;
+        }
 
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets the products.
+        /// </summary>
+        public List<Product> Products { get; } = new List<Product>();
+   
         /// <summary>
         /// The create product.
         /// </summary>
@@ -27,7 +45,7 @@
         public Product CreateProduct(string name, double price)
         {
             var product = new Product(name, price);
-            this.products.Add(product);
+            this.Products.Add(product);
 
             return product;
         }
