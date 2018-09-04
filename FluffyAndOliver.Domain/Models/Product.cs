@@ -2,9 +2,7 @@
 {
     using FluffyAndOliver.Shared;
 
-    /// <summary>
-    /// The product.
-    /// </summary>
+    /// <inheritdoc />
     public class Product : Entity
     {
         /// <summary>
@@ -31,5 +29,15 @@
         /// Gets or sets the price.
         /// </summary>
         public double Price { get; set; }
+
+        /// <summary>
+        /// Gets or sets the order id.
+        /// </summary>
+        public int OrderId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the order.
+        /// </summary>
+        public Order Order { get; set; }
     }
 }

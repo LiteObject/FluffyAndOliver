@@ -3,6 +3,7 @@
     using System;
     using System.Linq;
 
+    using FluffyAndOliver.Data.Extensions;
     using FluffyAndOliver.Domain.Models;
 
     using Microsoft.EntityFrameworkCore;
@@ -12,13 +13,29 @@
     /// <summary>
     /// The order context.
     /// </summary>
-    public class SalesContext : DbContext
+    public class OrderContext : DbContext
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SalesContext"/> class.
+        /// The seed.
         /// </summary>
-        public SalesContext()
+        private readonly bool seed;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OrderContext"/> class.
+        /// </summary>
+        public OrderContext()
         {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OrderContext"/> class.
+        /// </summary>
+        /// <param name="seed">
+        /// The seed.
+        /// </param>
+        public OrderContext(bool seed)
+        {
+            this.seed = seed;
         }
 
         /// <summary>
@@ -74,6 +91,22 @@
                                     && level == LogLevel.Information,
                                 true)
                         }));
+        }
+
+        /// <summary>
+        /// The on model creating.
+        /// </summary>
+        /// <param name="modelBuilder">
+        /// The model builder.
+        /// </param>
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            if (this.seed)
+            {
+                modelBuilder.Seed();
+            }
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

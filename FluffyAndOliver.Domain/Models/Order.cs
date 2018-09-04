@@ -26,9 +26,9 @@
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets the products.
+        /// Gets or sets the products.
         /// </summary>
-        public List<Product> Products { get; } = new List<Product>();
+        public List<Product> Products { get; set; } = new List<Product>();
    
         /// <summary>
         /// The create product.

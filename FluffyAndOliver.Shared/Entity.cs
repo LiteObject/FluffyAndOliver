@@ -15,7 +15,7 @@
         /// <summary>
         /// Gets or sets the created by.
         /// </summary>
-        public virtual string CreatedBy { get; set; }
+        public virtual string CreatedBy { get; set; } = "Unknown";
 
         /// <summary>
         /// Gets or sets the created on.
@@ -25,12 +25,12 @@
         /// <summary>
         /// Gets or sets the modified by.
         /// </summary>
-        public virtual string ModifiedBy { get; set; }
+        public virtual string ModifiedBy { get; set; } = "Unknown";
 
         /// <summary>
         /// Gets or sets the modified on.
         /// </summary>
-        public virtual DateTime ModifiedOn { get; set; }
+        public virtual DateTime ModifiedOn { get; set; } = DateTime.Now;
         
         /// <summary>
         /// The ==.
