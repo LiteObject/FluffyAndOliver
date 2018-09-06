@@ -106,6 +106,8 @@
                 modelBuilder.Seed();
             }
 
+            modelBuilder.Entity<Order>().OwnsOne(o => o.ShippingAddress);
+
             base.OnModelCreating(modelBuilder);
         }
     }

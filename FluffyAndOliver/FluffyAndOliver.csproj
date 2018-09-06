@@ -5,4 +5,8 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FluffyAndOliver.Data\FluffyAndOliver.Data.csproj" />
+  </ItemGroup>
+
 </Project>

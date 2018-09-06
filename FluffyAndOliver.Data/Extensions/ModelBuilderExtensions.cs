@@ -37,14 +37,10 @@
                 new EmployeeSkill { Id = 2, EmployeeId = 1, SkillId = 2 },
                 new EmployeeSkill { Id = 3, EmployeeId = 2, SkillId = 2 },
                 new EmployeeSkill { Id = 4, EmployeeId = 3, SkillId = 1 });
-
-            modelBuilder.Entity<Product>().HasData(
-                new Product("Product One", 1.99),
-                new Product("Product Two", 2.99));
-
-            modelBuilder.Entity<Order>().HasData(
-                new Order("Order One") { Products = new List<Product> { new Product("Product One", 1.99) } },
-                new Order("Order Two") { Products = new List<Product> { new Product("Product Two", 2.99) } });
+            
+            modelBuilder.Entity<Product>().HasData(SeedData.GetProducts());
+            modelBuilder.Entity<Order>().HasData(SeedData.GetOrders());
+            modelBuilder.Entity<OrderedProduct>().HasData(SeedData.GetOrderedProducts());
         }
     }
 }
